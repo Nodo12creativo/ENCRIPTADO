@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Encriptador y desencriptador</title>
+	<link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="images/alura.png" type="image/x-icon">
+</head>
+<header>
+    <div class="logo-nav-container">
+        <a href="index.html">
+          <img src="images/logo-image.png" class="logo" alt="my logo">
+        </a>
+    </div> 
+</header>
+<body>
+	<div class="wrapper">
+
+		<div class="left-column">
+	        <h1>ENCRIPTADOR DE TEXTOS</h1>
+	        <label for="texto">Ingresa tu texto:</label><br>
+	        <textarea id="texto" rows="8" cols="60"></textarea><br>
+	        <label for="accion">¿Qué haremos hoy?</label><br><br>
+	        <select id="accion">
+		         <option value="encriptar">Encriptar</option>
+		         <option value="desencriptar">Desencriptar</option>
+	        </select><br><br>
+	        <button onclick="convertir()">¡Vamos!</button><br><br>
+	        <label for="resultado">Resultado:</label><br>
+	        <textarea id="resultado" rows="8" cols="60" readonly></textarea><br><br>
+	        <button onclick="copiar()">Copiar al portapapeles</button><br><br><br>
+		</div>
+
+		<div class="right-column">
+			<h1>Descifrador</h1>
+			<p>¡Bienvenido al Descifrador de NODO12, laboratorio Creativo.! Aquí podrás descifrar mensajes secretos utilizando las llaves de encriptación más seguras que existen.</p>
+			<p>Por favor, sigue estas instrucciones:</p>
+			<ul>
+				<li>Escribe el mensaje encriptado en la sección "Ingresa tu texto".</li>
+				<li>Elige el proceso a seguir de la lista desplegable y haz clic en el botón "¡Vamos!".</li>
+				<li>El texto desencriptado aparecerá en la sección "Resultado".</li>
+				<li>Si lo deseas, puedes copiar tu resultado con el botón "Copiar al portapapeles".</li>
+			</ul>
+			<p>¡Buena suerte agente!</p>
+		</div>
+	</div>
+
+	<script>
+		function convertir() {
+			var texto = document.getElementById("texto").value.toLowerCase();
+			var accion = document.getElementById("accion").value;
+			var resultado = "";
+			if (accion == "encriptar") {
+				resultado = encriptar(texto);
+			} else if (accion == "desencriptar") {
+				resultado = desencriptar(texto);
+			}
+			document.getElementById("resultado").value = resultado;
+		}
+
+		function encriptar(texto) {
+			texto = texto.replace(/e/g, "enter");
+			texto = texto.replace(/i/g, "imes");
+			texto = texto.replace(/a/g, "ai");
+			texto = texto.replace(/o/g, "ober");
+			texto = texto.replace(/u/g, "ufat");
+			return texto;
+		}
+
+		function desencriptar(texto) {
+			texto = texto.replace(/enter/g, "e");
+			texto = texto.replace(/imes/g, "i");
+			texto = texto.replace(/ai/g, "a");
+			texto = texto.replace(/ober/g, "o");
+			texto = texto.replace(/ufat/g, "u");
+			return texto;
+		}
+
+		function copiar() {
+			var resultado = document.getElementById("resultado");
+			resultado.select();
+			document.execCommand("copy");
+			alert("¡Texto copiado al portapapeles!");
+		}
+	</script>
+
+	
+
+	  <footer>
+		<ul>
+			<li><a href="https://github.com/Gus20181" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+			<li><a href="https://www.linkedin.com/in/gustavo-adolfo-henao-2b767344/" target="_blank"><i class='fa fa-linkedin-square' style='color: blue'></i> LinkedIn</a></li>
+		  </ul>
+		<h5><b>NODO12, LABORATORIO CREATIVO By Gustavo Adolfo Henao sanchez, Medellin - Colombia, 2023</b></h5>
+	  </footer>
+</body>
+</html>
